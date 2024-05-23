@@ -1,0 +1,47 @@
+header{
+  margin-bottom: 30px;
+}
+
+header .logo {
+  color: #000000;
+  font-weight: 600;
+  font-size: 50px;
+}
+
+header .logo span {
+  color: #000000;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+header .logo img {
+  display: inline-block;
+  vertical-align: middle;
+  height: 50px;
+  margin-left: 10px;
+}
+
+header ul.navigation {
+  font-size: 25px;
+  list-style: none;
+  float: right;
+  padding: 25px;
+}
+
+header ul.navigation li {
+  color: #000000;
+  display: inline;
+  margin-left: 25px;
+  cursor: pointer;
+  transition: opacity 500ms;
+}
+
+header ul.navigation li:hover {
+  opacity: 0.5;
+}
+
+header .headerLink {
+  text-decoration: none;
+}
