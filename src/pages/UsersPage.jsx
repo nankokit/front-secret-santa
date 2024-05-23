@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getAllUser } from "../api/UserApi";
 import AddUser from "../components/AddUser";
 import Header from "../components/Header";
@@ -24,10 +25,16 @@ const UsersPage = () => {
       </div>
       <div className="container">
         {users.map((user) => (
-          <div className="card" key={user.id} to={`/users/${user.id}`}>
-            <p className="h1">{user?.name}</p>
-            <p className="h2"> {user?.email}</p>
-          </div>
+          <Link
+            style={{ textDecoration: "none" }}
+            key={user.id}
+            to={`/users/${user.id}`}
+          >
+            <div className="card" key={user.id} to={`/users/${user.id}`}>
+              <p className="h1">{user?.name}</p>
+              <p className="h2"> {user?.email}</p>
+            </div>{" "}
+          </Link>
         ))}
       </div>
     </div>

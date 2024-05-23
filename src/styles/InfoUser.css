@@ -1,0 +1,51 @@
+.infoUser {
+  background: #e4d7d7;
+  color: black;
+  border-radius: 2.5em;
+  padding: 2em;
+  transition: transform 0.4s ease;
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.infoUser .card {
+  text-decoration: none;
+  width: 380px;
+  height: 230px;
+  background: rgb(145, 14, 14);
+  color: white;
+  position: relative;
+  border-radius: 2.5em;
+  transition: transform 0.4s ease;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.infoUser .card h1 {
+  text-decoration: none;
+  font-size: 40px;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  margin: 20px 40px;
+  transition: transform 0.4s ease;
+}
+
+.infoUser .card h2 {
+  font-size: 20px;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  margin: 20px 40px;
+  transition: transform 0.4s ease;
+}
+
+.infoUser .card:hover {
+  transform: translateY(-10px);
+}
