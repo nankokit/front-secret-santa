@@ -4,7 +4,6 @@ import AddUser from "../components/AddUser";
 import Header from "../components/Header";
 
 const UsersPage = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [users, setUsers] = useState([]);
   const getAllUserRequest = async () => {
     const data = await getAllUser();
@@ -18,11 +17,11 @@ const UsersPage = () => {
     <div className="wrapper">
       <Header />
       <h1>Users</h1>
+      <AddUser />
       <div className="container">
-        <button className="card" onClick={() => setIsOpen(!isOpen)}>
-          <p className="h1">new user</p>
-          <AddUser isOpen={isOpen} setIsOpen={setIsOpen} />
-        </button>
+        <div className="card">
+          <div className="h1"></div>
+        </div>
         {users.map((user) => (
           <div className="card" key={user.id} to={`/users/${user.id}`}>
             <p className="h1">{user?.name}</p>

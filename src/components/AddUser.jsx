@@ -1,12 +1,9 @@
-import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { createUser } from "../api/UserApi";
 
-const AddUser = ({ isOpen, setIsOpen }) => {
-  AddUser.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    setIsOpen: PropTypes.func.isRequired,
-  };
+const AddUser = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
@@ -21,7 +18,8 @@ const AddUser = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <div className="wrapper">
+    <div>
+      <button onClick={toggleModal}>ADD NEW USER</button>
       {isOpen && (
         <div className="modaloverlay">
           <div className="modal">
@@ -47,6 +45,12 @@ const AddUser = ({ isOpen, setIsOpen }) => {
                   type="email"
                   placeholder="Email"
                 />
+                {/* <input
+                  id="password"
+                  value={password}
+                  type="password"
+                  placeholder="Password"
+                /> */}
                 <button className="btn" onClick={handleCreateUser}>
                   create
                 </button>
