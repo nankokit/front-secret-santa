@@ -1,4 +1,4 @@
-const path = "users";
+const path = "/users";
 
 export const createUser = async (user) => {
   try {
