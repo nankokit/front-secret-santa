@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getUser, updateUser } from "../api/UserApi";
 
-const EditUser = ({ userId }) => {
+const UpdateUser = ({ userId, onUpdate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,6 +30,7 @@ const EditUser = ({ userId }) => {
       const updatedUser = await updateUser(userId, { name, email });
       setIsOpen(false);
       console.log("Updated user:", updatedUser);
+      onUpdate(updatedUser); // Вызываем функцию onUpdate, переданную из родительского компонента
     } catch (error) {
       console.error("Failed to update user:", error);
     }
@@ -81,4 +82,4 @@ const EditUser = ({ userId }) => {
   );
 };
 
-export default EditUser;
+export default UpdateUser;

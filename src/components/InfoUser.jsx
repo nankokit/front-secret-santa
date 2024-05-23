@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getUser } from "../api/UserApi";
+import { getUser, updateUser } from "../api/UserApi"; // Импортируем функцию updateUser
 import Header from "../components/Header";
-import UpdateUser from "../components/UpdateUser"; // Импортируем новый компонент
+import UpdateUser from "../components/UpdateUser";
 
 const InfoUser = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
+  const [isUpdated, setIsUpdated] = useState(false); // Новое состояние для отслеживания обновления
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,7 +22,17 @@ const InfoUser = () => {
     };
 
     fetchUser();
-  }, [id]);
+  }, [id, isUpdated]); // Добавляем isUpdated в зависимости
+
+  const handleUpdateUser = async (updatedUser) => {
+    try {
+      await updateUser(id, updatedUser);
+      setIsUpdated(true); // Устанавливаем isUpdated в true после успешного обновления
+      setUser(updatedUser); // Обновляем состояние user с обновленными данными
+    } catch (error) {
+      console.error("Failed to update user:", error);
+    }
+  };
 
   return (
     <div className="wrapper">
@@ -37,7 +48,8 @@ const InfoUser = () => {
           <h1>{user?.name}</h1>
           <h2>{user?.email}</h2>
         </div>
-        <UpdateUser userId={id} /> {/* Встраиваем новый компонент */}
+        <UpdateUser userId={id} onUpdate={handleUpdateUser} />{" "}
+        {/* Передаем функцию обновления */}
       </div>
     </div>
   );

@@ -9,9 +9,9 @@ const LoginPage = () => {
 
   const handleRegister = async () => {
     if (!emailIsValid(email)) {
-        setError("Неправильный формат почты");
-        return;
-      }
+      setError("Неправильный формат почты");
+      return;
+    }
     const user = { name, email, password };
     const createdUser = await createUser(user);
     console.log("Created user:", createdUser);
