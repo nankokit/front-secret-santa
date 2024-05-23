@@ -1,10 +1,8 @@
-import { url } from "../constants/url.js";
-
 const path = "users";
 
 export const createUser = async (user) => {
   try {
-    const response = await fetch(`${url}${path}`, {
+    const response = await fetch(`${process.env.REACT_APP_URL}${path}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +23,7 @@ export const createUser = async (user) => {
 
 export const updateUser = async (id, user) => {
   try {
-    const response = await fetch(`${url}${path}/${id}`, {
+    const response = await fetch(`${process.env.REACT_APP_URL}${path}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +44,7 @@ export const updateUser = async (id, user) => {
 
 export const deleteUser = async (id) => {
   try {
-    const response = await fetch(`${url}${path}/${id}`, {
+    const response = await fetch(`${process.env.REACT_APP_URL}${path}/${id}`, {
       method: "DELETE",
     });
 
@@ -62,7 +60,7 @@ export const deleteUser = async (id) => {
 };
 
 export const getAllUser = async () =>
-  fetch(`${url}${path}/getAll`)
+  fetch(`${process.env.REACT_APP_URL}${path}/getAll`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -77,7 +75,7 @@ export const getAllUser = async () =>
     });
 
 export const getUser = async (id) =>
-  fetch(`${url}${path}/${id}`)
+  fetch(`${process.env.REACT_APP_URL}${path}/${id}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -93,7 +91,7 @@ export const getUser = async (id) =>
 
     export const searchUser = async (name, password) => {
       try {
-        const response = await fetch(`${url}${path}/search?name=${name}&password=${password}`);
+        const response = await fetch(`${process.env.REACT_APP_URL}${path}/search?name=${name}&password=${password}`);
     
         if (!response.ok) {
           throw new Error("Network response was not ok");
