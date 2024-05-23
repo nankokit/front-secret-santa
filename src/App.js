@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import InfoUser from './components/InfoUser';
 import FormsPage from './pages/FormsPage';
@@ -20,6 +20,7 @@ const App = () => {
         <Route path='/users' element={<UsersPage />} />
         <Route path='/users/:id' element={<InfoUser />} />
         <Route path='/forms' element={<FormsPage />} />
+        <Route path='*' element={<Navigate to="/" />} /> {/* Маршрут по умолчанию */}
       </Routes>
     </BrowserRouter>
   );
