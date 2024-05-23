@@ -1,24 +1,29 @@
-.addbth {
+.addButton {
   border: 1px solid transparent;
   background-color: rgb(152, 27, 30);
   border-radius: 1em;
   color: rgb(255, 255, 255);
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.5em;
   font-weight: 500;
-  padding: 1em 2em;
-  transition: all .2s;
+  padding: 1em 2.5em;
+  transition: all 0.2s;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  margin: 20px 0;
 }
 
-.addbth:hover {
+.addButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   background-color: rgb(220, 31, 39);
 }
 
 .modal {
   background-color: white;
-  border-radius: 1em;
+  border-radius: 2em;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  max-width: 400px;
   padding: 3em;
 }
 
@@ -27,7 +32,8 @@
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  margin-bottom: 20px;
+  font-size: 20px;
+  margin-bottom: 30px;
 }
 
 .modal .header .close {
@@ -35,14 +41,18 @@
   cursor: pointer;
   padding: 0.15em 0.5em;
   text-transform: uppercase;
-  transition: all .2s;
-  font-size: 25px;
+  transition: all 0.2s;
+  font-size: 30px;
   background-color: rgb(152, 27, 30);
   border-radius: 0.7em;
   color: rgb(255, 255, 255);
   font-weight: 500;
   display: inline-block;
   vertical-align: middle;
+
+  @media (max-width: 400px) {
+    font-size: 1.2em;
+  }
 }
 
 .modal .header .close:hover {
@@ -51,31 +61,45 @@
 }
 
 .modal .header .text {
-  font-size: 24px;
   margin: 0;
   text-align: left;
   display: inline-block;
   vertical-align: middle;
+
+  @media (max-width: 400px) {
+    font-size: 1.2em;
+  }
 }
 
-.modal .btn {
+.modal .modalcontent {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+}
+
+.modal .modalcontent .btn {
   border: 1px solid transparent;
   background-color: rgb(152, 27, 30);
   border-radius: 1em;
   color: rgb(255, 255, 255);
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.5em;
   font-weight: 500;
   padding: 1em 2em;
-  transition: all .2s;
+  transition: all 0.2s;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  margin: 20px 0;
 }
 
-.modal .btn:hover {
+.modal .modalcontent .btn:hover {
   background-color: rgb(220, 31, 39);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.modal .inputcontainer {
+.modal .modalcontent .inputcontainer {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -83,30 +107,25 @@
   text-align: center;
 }
 
-.modal .inputcontainer input {
+.modal .modalcontent .inputcontainer input {
   background: rgb(255, 255, 255);
   border: 1px solid #333;
   border-radius: 1em;
   color: black;
-  font-size: 20px;
+  font-size: 1.5em;
   outline: 0;
   padding: 1em;
-}
 
-@media (max-width: 400px) {
-  .modal {
-    padding: 2.5em;
-  }
-
-  .modal .inputcontainer input {
-    font-size: 18px;
-    padding: 1em;
-  }
-
-  .modal .btn {
-    font-size: 16px;
+  @media (max-width: 400px) {
+    font-size: 1.2em;
     padding: 0.8em 1.6em;
   }
 }
 
+.addUserWindow {
+  position: absolute;
+}
 
+.addUserWindow.active {
+  display: block;
+}

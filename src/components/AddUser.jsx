@@ -3,23 +3,27 @@ import { createUser } from "../api/UserApi";
 
 const AddUser = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-
   const handleCreateUser = async () => {
     const user = { name, email };
     const createdUser = await createUser(user);
+    setIsOpen(false);
+    setName("");
+    setEmail("");
     console.log("Created user:", createdUser);
   };
 
   return (
     <div>
-      <button onClick={toggleModal}>ADD NEW USER</button>
+      <button className="addButton" onClick={toggleModal}>
+        ADD NEW USER
+      </button>
       {isOpen && (
         <div className="modaloverlay">
           <div className="modal">
@@ -45,16 +49,10 @@ const AddUser = () => {
                   type="email"
                   placeholder="Email"
                 />
-                {/* <input
-                  id="password"
-                  value={password}
-                  type="password"
-                  placeholder="Password"
-                /> */}
-                <button className="btn" onClick={handleCreateUser}>
-                  create
-                </button>
               </form>
+              <button className="btn" onClick={handleCreateUser}>
+                create
+              </button>
             </div>
           </div>
         </div>

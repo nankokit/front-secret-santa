@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-@import '../src/styles/AddUser.css';
-@import '../src/styles/Header.css';
-@import '../src/styles/Home.css';
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import "../src/styles/AddUser.css";
+@import "../src/styles/Header.css";
+@import "../src/styles/Home.css";
 
 * {
   margin: 0;
@@ -20,7 +20,26 @@ body {
   margin: 50px auto;
 }
 
-.container{
+.decription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.decription h1 {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 40px;
+}
+
+.decription .btn {
+  display: inline-block;
+  text-align: right;
+}
+
+.container {
   background: #e4d7d7;
   color: black;
   border-radius: 2.5em;
@@ -31,7 +50,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1em;
+  gap: 20px;
 }
 
 .container .card {
@@ -41,7 +60,6 @@ body {
   color: white;
   position: relative;
   border-radius: 2.5em;
-  /* padding: 1.5em; */
   transition: transform 0.4s ease;
   flex-direction: column;
 }
@@ -80,4 +98,3 @@ body {
   align-items: center;
   z-index: 1000;
 }
-

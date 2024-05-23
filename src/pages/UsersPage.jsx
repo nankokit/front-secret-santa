@@ -16,12 +16,13 @@ const UsersPage = () => {
   return (
     <div className="wrapper">
       <Header />
-      <h1>Users</h1>
-      <AddUser />
-      <div className="container">
-        <div className="card">
-          <div className="h1"></div>
+      <div className="decription">
+        <h1>All users:</h1>
+        <div className="btn">
+          <AddUser />
         </div>
+      </div>
+      <div className="container">
         {users.map((user) => (
           <div className="card" key={user.id} to={`/users/${user.id}`}>
             <p className="h1">{user?.name}</p>
