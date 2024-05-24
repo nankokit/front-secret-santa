@@ -74,7 +74,7 @@ export const getAllUser = async () =>
       console.error("There was a problem with your fetch operation:", error);
     });
 
-export const getUser = async (id) =>
+export const getUserById = async (id) =>
   fetch(`${process.env.REACT_APP_URL}${path}/${id}`)
     .then((response) => {
       if (!response.ok) {
@@ -86,7 +86,7 @@ export const getUser = async (id) =>
       return data;
     })
     .catch((error) => {
-      console.error("There was a problem with your fetch operation:", error);
+      console.error("There was a problem with your fetch operation GETUSERBYID:", error);
     });
 
     export const searchUser = async (name, password) => {

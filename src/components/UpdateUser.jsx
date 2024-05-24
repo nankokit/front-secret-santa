@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUser, updateUser } from "../api/UserApi";
+import { getUserById, updateUser } from "../api/UserApi";
 
 const UpdateUser = ({ userId, onUpdate }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +10,7 @@ const UpdateUser = ({ userId, onUpdate }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const fetchedUser = await getUser(userId);
+        const fetchedUser = await getUserById(userId);
         setUser(fetchedUser);
         setName(fetchedUser.name);
         setEmail(fetchedUser.email);
@@ -81,5 +81,9 @@ const UpdateUser = ({ userId, onUpdate }) => {
     </div>
   );
 };
+// UpdateUser.propTypes = {
+//   userId: PropTypes.string.isRequired,
+//   onUpdate: PropTypes.func.isRequired,
+// };
 
 export default UpdateUser;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { deleteUser, getUser, updateUser } from "../api/UserApi";
+import { deleteUser, getUserById, updateUser } from "../api/UserApi";
 import DeleteUser from "../components/DeleteUser"; // Импортируем новый компонент
 import Header from "../components/Header";
 import UpdateUser from "../components/UpdateUser";
@@ -15,7 +15,7 @@ const InfoUser = () => {
     const fetchUser = async () => {
       if (id) {
         try {
-          const data = await getUser(id);
+          const data = await getUserById(id);
           setUser(data);
         } catch (error) {
           console.error("Failed to fetch user:", error);

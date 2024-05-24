@@ -17,7 +17,7 @@ const UsersPage = () => {
   }, []);
 
   const handleNewUser = (newUser) => {
-    setUsers([...users, newUser]); // Обновляем состояние users с новым пользователем
+    setUsers([...users, newUser]);
   };
 
   return (
@@ -27,7 +27,6 @@ const UsersPage = () => {
         <h1>All users:</h1>
         <div className="btn">
           <AddUser onNewUser={handleNewUser} />{" "}
-          {/* Передаем обновленный массив users */}
         </div>
       </div>
       <div className="container">
