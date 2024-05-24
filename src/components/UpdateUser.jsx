@@ -42,7 +42,7 @@ const UpdateUser = ({ userId, onUpdate }) => {
 
   return (
     <div>
-      <button className="editButton" onClick={toggleModal}>
+      <button className="back" onClick={toggleModal}>
         EDIT USER
       </button>
       {isOpen && (

@@ -49,3 +49,25 @@
 .infoUser .card:hover {
   transform: translateY(-10px);
 }
+
+.infoUser .btn {
+  border: 1px solid transparent;
+  background-color: rgb(152, 27, 30);
+  border-radius: 1em;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  padding: 1em 2em;
+  transition: all 0.2s;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.infoUser .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgb(220, 31, 39);
+}
