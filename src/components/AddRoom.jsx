@@ -69,7 +69,9 @@ const AddRoom = ({ onNewRoom }) => {
                 </button>
               </div>
               <form className="inputcontainer">
-                <label htmlFor="master">Master:</label>
+                <label htmlFor="master" className="text">
+                  Master:
+                </label>
                 <select
                   id="master"
                   value={master?.id || ""}
@@ -83,7 +85,9 @@ const AddRoom = ({ onNewRoom }) => {
                   ))}
                 </select>
 
-                <label htmlFor="users">Users:</label>
+                <label htmlFor="users" className="text">
+                  Users:
+                </label>
                 <select
                   id="users"
                   multiple

@@ -16,8 +16,8 @@ const RoomsPage = () => {
       const roomsWithUserInfo = await Promise.all(
         data.map(async (room) => {
           const users = await Promise.all(
-            room.users.map(async (userId) => {
-              const user = await getUserById(userId);
+            room.users.map(async (userArray) => {
+              const user = await getUserById(userArray?.id);
               return user;
             })
           );

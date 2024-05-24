@@ -4,7 +4,6 @@ import { deleteRoom, getRoomById, updateRoom } from "../api/RoomApi";
 import { getUserById } from "../api/UserApi";
 import DeleteRoom from "../components/DeleteRoom";
 import Header from "../components/Header";
-import UpdateRoom from "./UpdateRoom";
 
 const InfoRoom = () => {
   const { id } = useParams();
@@ -19,14 +18,8 @@ const InfoRoom = () => {
           const data = await getRoomById(id);
           const master = data.master ? await getUserById(data.master.id) : null;
           const users = await Promise.all(
-            data.users.map(async (userId) => {
-              const user = await getUserById(userId);
-              return {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                password: user.password,
-              };
+            data.users.map(async (userItem) => {
+              return await getUserById(userItem.id);
             })
           );
           setRoom({ ...data, master, users });
@@ -73,10 +66,10 @@ const InfoRoom = () => {
             <div className="card">
               <h1>Room ID: {room.id}</h1>
               <h2>Master: {room.master?.name || "N/A"}</h2>
-              <h2>
+              {/* <h2>
                 Users:{" "}
                 {room.users.map((user) => user?.name || "N/A").join(", ")}
-              </h2>
+              </h2> */}
             </div>
           )}
         </div>

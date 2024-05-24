@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { getRoomsByUserId } from "../api/RoomApi"; // Импорт функции getRoomsByUserId
 import { deleteUser, getUserById, updateUser } from "../api/UserApi";
-import DeleteUser from "../components/DeleteUser"; // Импортируем новый компонент
+import DeleteUser from "../components/DeleteUser";
 import Header from "../components/Header";
 import UpdateUser from "../components/UpdateUser";
 
@@ -10,6 +11,7 @@ const InfoUser = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isUpdated, setIsUpdated] = useState(false);
+  const [rooms, setRooms] = useState([]); // Состояние для хранения комнат
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -17,6 +19,11 @@ const InfoUser = () => {
         try {
           const data = await getUserById(id);
           setUser(data);
+
+          // Загрузка комнат пользователя
+          const userRooms = await getRoomsByUserId(id);
+          setRooms(userRooms);
+          console.log("User rooms:", userRooms);
         } catch (error) {
           console.error("Failed to fetch user:", error);
         }
@@ -58,6 +65,16 @@ const InfoUser = () => {
         <div className="card">
           <h1>{user?.name}</h1>
           <h2>{user?.email}</h2>
+          <h2>Rooms:</h2>
+          <ul className="h2">
+            {rooms.map((room) => (
+              <li key={room.id}>
+                <Link className="link" to={`/rooms/${room.id}`}>
+                  {room.id}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
         <UpdateUser userId={id} onUpdate={handleUpdateUser} />
         <DeleteUser userId={id} onDelete={handleDeleteUser} />

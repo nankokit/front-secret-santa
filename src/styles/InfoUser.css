@@ -71,3 +71,28 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   background-color: rgb(220, 31, 39);
 }
+.infoUser .card ul {
+  list-style: none;
+  font-size: 20px;
+  display: flex;
+
+  justify-content: left;
+  gap: 1em;
+  margin: 0 40px;
+  text-decoration: none;
+}
+
+.infoUser .card ul li {
+  list-style: none;
+  font-size: 20px;
+  display: flex;
+  justify-content: left;
+  gap: 1em;
+  color: #e4d7d7;
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  color: #e4d7d7;
+}

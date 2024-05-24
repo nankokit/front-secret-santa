@@ -15,6 +15,7 @@ export const createRoom = async (room) => {
     }
 
     const data = await response.json();
+    console.log("Created json  room:", data);
     return data;
   } catch (error) {
     console.error("There was a problem with your fetch operation:", error);
