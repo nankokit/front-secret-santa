@@ -6,6 +6,7 @@ import Header from "../components/Header";
 
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
+
   const getAllUserRequest = async () => {
     const data = await getAllUser();
     setUsers(data);
@@ -14,13 +15,19 @@ const UsersPage = () => {
   useEffect(() => {
     getAllUserRequest();
   }, []);
+
+  const handleNewUser = (newUser) => {
+    setUsers([...users, newUser]); // Обновляем состояние users с новым пользователем
+  };
+
   return (
     <div className="wrapper">
       <Header />
       <div className="decription">
         <h1>All users:</h1>
         <div className="btn">
-          <AddUser />
+          <AddUser onNewUser={handleNewUser} />{" "}
+          {/* Передаем обновленный массив users */}
         </div>
       </div>
       <div className="container">
