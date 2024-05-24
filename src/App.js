@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import InfoRoom from './components/InfoRoom';
 import InfoUser from './components/InfoUser';
 import FormsPage from './pages/FormsPage';
 import Home from './pages/Home';
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/registration' element={<RegistrationPage />} />
         <Route path='/rooms' element={<RoomsPage />} />
+        <Route path='/rooms/:id' element={<InfoRoom />} />
         <Route path='/users' element={<UsersPage />} />
         <Route path='/users/:id' element={<InfoUser />} />
         <Route path='/forms' element={<FormsPage />} />
