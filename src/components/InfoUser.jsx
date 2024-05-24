@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getUser, updateUser } from "../api/UserApi"; // Импортируем функцию updateUser
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { deleteUser, getUser, updateUser } from "../api/UserApi";
+import DeleteUser from "../components/DeleteUser"; // Импортируем новый компонент
 import Header from "../components/Header";
 import UpdateUser from "../components/UpdateUser";
 
 const InfoUser = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [isUpdated, setIsUpdated] = useState(false); // Новое состояние для отслеживания обновления
+  const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -22,15 +24,24 @@ const InfoUser = () => {
     };
 
     fetchUser();
-  }, [id, isUpdated]); // Добавляем isUpdated в зависимости
+  }, [id, isUpdated]);
 
   const handleUpdateUser = async (updatedUser) => {
     try {
       await updateUser(id, updatedUser);
-      setIsUpdated(true); // Устанавливаем isUpdated в true после успешного обновления
-      setUser(updatedUser); // Обновляем состояние user с обновленными данными
+      setIsUpdated(true);
+      setUser(updatedUser);
     } catch (error) {
       console.error("Failed to update user:", error);
+    }
+  };
+
+  const handleDeleteUser = async () => {
+    try {
+      await deleteUser(id);
+      navigate(-1); // Переход на предыдущую страницу
+    } catch (error) {
+      console.error("Failed to delete user:", error);
     }
   };
 
@@ -48,8 +59,8 @@ const InfoUser = () => {
           <h1>{user?.name}</h1>
           <h2>{user?.email}</h2>
         </div>
-        <UpdateUser userId={id} onUpdate={handleUpdateUser} />{" "}
-        {/* Передаем функцию обновления */}
+        <UpdateUser userId={id} onUpdate={handleUpdateUser} />
+        <DeleteUser userId={id} onDelete={handleDeleteUser} />
       </div>
     </div>
   );

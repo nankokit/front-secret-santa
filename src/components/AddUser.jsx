@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createUser } from "../api/UserApi";
 
-const AddUser = () => {
+const AddUser = ({ onNewUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,6 +16,7 @@ const AddUser = () => {
     setIsOpen(false);
     setName("");
     setEmail("");
+    onNewUser(createdUser); // Вызываем обновленную функцию onNewUser
     console.log("Created user:", createdUser);
   };
 
